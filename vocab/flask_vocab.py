@@ -112,16 +112,16 @@ def check():
         flask.session["matches"] = matches
         #Changed set result to true
         result["sucess"] = True
-        ressult["message"] = "Word Found!"
+        result["message"] = "Word Found!"
     elif text in matches:
         #changed flask session to result
-        result["messages"] = "You already found {}".format(text)
+        result["message"] = "You already found {}".format(text)
     elif not matched:
         #changed flask session to result
-        result["message"] = "{} isn't in the list of words".format(text))
+        result["message"] = "{} isn't in the list of words".format(text)
     elif not in_jumble:
         #changed flask session to result
-        result["message"] = '"{}" can\'t be made from the letters {}'.format(text, jumble))
+        result["message"] = '"{}" can\'t be made from the letters {}'.format(text, jumble)
     else:
         app.logger.debug("This case shouldn't happen!")
         assert False  # Raises AssertionError
