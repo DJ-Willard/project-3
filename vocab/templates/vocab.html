@@ -87,16 +87,16 @@
 	 <script>
 // helpful resourse https://developer.mozilla.org/en-US/docs/Web/API/Window
 //js redirect form https://www.w3schools.com/howto/howto_js_redirect_webpage.asp
-		$("#entry").submit(function(event) { 
+		 $("#entry").submit(function(event) { 
 					 event.preventDefault();
 				 });
-		 $("#jumble").text();
+		 var jumble = $("#jumble").text();
 		 $("#attempt").keyup(function(event) {
 			var txt = $("attempt").val();
 			var keycode = event.which;
 			var letter = String.fromCharCode(keycode);
 			var letter = letter.toLowerCase();
-			if (! jumble.include(letter)) {return}
+			if (! jumble.includes(letter)) {return}
 			$.getJSON("/_check", {text: txt},function(data) {
 				rslt = data.result.success;			 
 				//debug to console form minijax
