@@ -103,7 +103,7 @@ def check():
     matched = WORDS.has(text)
 
     #intialized a resualt varibale
-    result = {"sucess": False,"message":""}
+    result = {"sucess": False,"message":"" "gg": False}
 
     # Respond appropriately
     if matched and in_jumble and not (text in matches):
@@ -131,6 +131,7 @@ def check():
     if len(matches) >= flask.session["target_count"]:
         result["success"] = True
         result["message"] = "Congratulations! You found all the words."
+        result["gg"] = True
     else:
         result["message"] = "keep going! You can find more words."
 
