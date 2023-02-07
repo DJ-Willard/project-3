@@ -142,7 +142,9 @@ def check():
     else:
         result["message"] = "keep going! You can find more words."
         app.logger.debug("there are more words")
-
+    
+    result["words"] = ",".join(result["words"])
+    
     return flask.jsonify(rslt=result)
 
 
