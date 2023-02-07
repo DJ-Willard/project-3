@@ -83,6 +83,7 @@
          <br />
          <h2>You found </h2>
          <p id="results"></p>
+	 <p id="matched"></p>
 	 <!-- removed jinji logic adding json logic-->
 	 <script>
 // helpful resourse https://developer.mozilla.org/en-US/docs/Web/API/Window
@@ -106,15 +107,15 @@
 				game = data.rslt.gg;
 				ms = data.rslt.message;
 				//debug to console form minijax
-				console.log("result: " + rslt)
+				console.log("result: " + rslt + data.rslt.words)
 				//current concent of the input field
 				if (!game && rslt) {
 					$("#results").append(txt + " ");
 					$("#results").html(data.rslt.message);
 					$("#attempt").val("");
+					$("#matched").html(data.rslt.words);
 				}
 				if (!game && !rslt){
-					$("#attempt").val("");
 					$("#results").html(data.rslt.message);
 				}
 				if (game && rslt) {
