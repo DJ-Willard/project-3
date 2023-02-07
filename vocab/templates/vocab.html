@@ -85,21 +85,41 @@
          <p id="results"></p>
 	 <!-- removed jinji logic adding json logic-->
 	 <script>
+// helpful resourse https://developer.mozilla.org/en-US/docs/Web/API/Window
+//js redirect form https://www.w3schools.com/howto/howto_js_redirect_webpage.asp
 		$("#entry").submit(function(event) { 
-			event.preventDefault();
-			});
+					 event.preventDefault();
+				 });
 		 $("#attempt").keyup(function(event) {
 			var txt = $("attempt").val();
 			var keycode = event.which;
 			var letter = String.fromCharCode(keycode);
 			if (! "ABCDEFGHIJKLMNOPQRSTUVWXYZ".include(letter)) {return}
-			$.getJSON("/_check", {text: txt},
-				function(data) {
-				rsval = data.result.long_enough;
-				console.log("rsval: " + rsval)
-				if (rsval) {
-					$("#results").html(
-				  	
+			$.getJSON("/_check", {text: txt},function(data) {
+				rslt = data.result.success;
+				game = data.result.gg;			 
+				//debug to console form minijax
+				console.log("result: " + result)
+				//current concent of the input field
+				if(!gg and rslt) {
+					$("#results").append(txt + " ");
+					$("#attempt").val("");
+				}
+				if(!gg and !rslt){
+					$("#attempt").val("");
+				}
+				if (gg and rslt) {
+					//redirect on success to /success
+					location.replace("/success")
+				}
+			});
+		}):
+
+
+
+				
+
+	</script>				  	
       </div>
       <!-- container -->
    </body>
