@@ -94,7 +94,7 @@ def check():
 
     # The data we need, from form and from cookie
     #Change flask logic to get resquests
-    text = flask.request.args.get["attempt"]
+    text = flask.request.args.get("text", type=str)
     jumble = flask.session["jumble"]
     matches = flask.session.get("matches", [])  # Default to empty list
 
@@ -103,7 +103,7 @@ def check():
     matched = WORDS.has(text)
 
     #intialized a resualt varibale
-    result = {"sucess": False,"message":"", "gg": False}
+    result = {"sucess": False,"message":"", "gg": False, "words": ""}
 
     # Respond appropriately
     if matched and in_jumble and not (text in matches):
@@ -113,15 +113,21 @@ def check():
         #Changed set result to true
         result["sucess"] = True
         result["message"] = "Word Found!"
+        result["words"] = matches
+        app.logger.debug("Word found")
+        app.logger.debug(print(result["message"]))
     elif text in matches:
         #changed flask session to result
         result["message"] = "You already found {}".format(text)
+        app.logger.debug("word exists")
     elif not matched:
         #changed flask session to result
         result["message"] = "{} isn't in the list of words".format(text)
+        app.logger.debug("isn't a word")
     elif not in_jumble:
         #changed flask session to result
         result["message"] = '"{}" can\'t be made from the letters {}'.format(text, jumble)
+        app.logger.debug("not in the letters")
     else:
         app.logger.debug("This case shouldn't happen!")
         assert False  # Raises AssertionError
@@ -132,10 +138,14 @@ def check():
         result["success"] = True
         result["message"] = "Congratulations! You found all the words."
         result["gg"] = True
+        app.logger.debug("gg")
     else:
         result["message"] = "keep going! You can find more words."
-
-    return flask.jsonify(result)
+        app.logger.debug("there are more words")
+    
+    result["words"] = ",".join(result["words"])
+    
+    return flask.jsonify(rslt=result)
 
 
 ###############
