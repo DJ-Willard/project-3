@@ -91,16 +91,21 @@
 					 event.preventDefault();
 				 });
 		 var jumble = $("#jumble").text();
+		 console.log("jumble: " + jumble);
 		 $("#attempt").keyup(function(event) {
 			var txt = $("attempt").val();
+			console.log("txt: " + txt);
 			var keycode = event.which;
 			var letter = String.fromCharCode(keycode);
 			var letter = letter.toLowerCase();
+			console.log("letter: " + letter);
 			if (! jumble.includes(letter)) {return}
+			console.log("is in jumble");		  
 			$.getJSON("/_check", {text: txt},function(data) {
-				rslt = data.result.success;			 
+				rslt = data.result.success;
+				game = data.result.gg;
 				//debug to console form minijax
-				console.log("result: " + result)
+				console.log("result: " + rslt)
 				//current concent of the input field
 				if (!game && rslt) {
 					$("#results").append(txt + " ");
