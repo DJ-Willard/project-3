@@ -114,7 +114,8 @@ def check():
         result["sucess"] = True
         result["message"] = "Word Found!"
         app.logger.debug("Word found")
-        app.logger.debug(f "{result["message"]}")
+        app.logger.debug("word fond")
+        app.logger.debug(print(result["message"]))
     elif text in matches:
         #changed flask session to result
         result["message"] = "You already found {}".format(text)
@@ -142,7 +143,7 @@ def check():
         result["message"] = "keep going! You can find more words."
         app.logger.debug("there are more words")
 
-    return flask.jsonify(rs=result)
+    return flask.jsonify(rlst=result)
 
 
 ###############

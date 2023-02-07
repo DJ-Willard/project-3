@@ -60,7 +60,7 @@
          </div>
          <div class="row">
             <div class="col-xs-6 text-center lead">
-               <strong>{{ session.jumble }}</strong>
+               <strong id="jumble">{{ session.jumble }}</strong>
             </div>
          </div>
          <div class="row">
@@ -93,7 +93,7 @@
 		 var jumble = $("#jumble").text();
 		 console.log("jumble: " + jumble);
 		 $("#attempt").keyup(function(event) {
-			var txt = $("attempt").val();
+			var txt = $("#attempt").val();
 			console.log("txt: " + txt);
 			var keycode = event.which;
 			var letter = String.fromCharCode(keycode);
@@ -102,19 +102,23 @@
 			if (! jumble.includes(letter)) {return}
 			console.log("is in jumble");		  
 			$.getJSON("/_check", {text: txt},function(data) {
-				rslt = data.result.success;
-				game = data.result.gg;
+				rslt = data.rslt.success;
+				game = data.rslt.gg;
+				ms = data.rslt.message;
 				//debug to console form minijax
 				console.log("result: " + rslt)
 				//current concent of the input field
 				if (!game && rslt) {
 					$("#results").append(txt + " ");
+					$("#results").html(data.rslt.message);
 					$("#attempt").val("");
 				}
 				if (!game && !rslt){
 					$("#attempt").val("");
+					$("#results").html(data.rslt.message);
 				}
 				if (game && rslt) {
+					$("#results").html(data.rslt.message);
 					//redirect on success to /success
 					location.replace("/success");
 				}
