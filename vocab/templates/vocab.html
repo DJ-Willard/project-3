@@ -101,14 +101,14 @@
 				//debug to console form minijax
 				console.log("result: " + result)
 				//current concent of the input field
-				if(!gg and rslt) {
+				if(!game and rslt) {
 					$("#results").append(txt + " ");
 					$("#attempt").val("");
 				}
-				if(!gg and !rslt){
+				if(!game and !rslt){
 					$("#attempt").val("");
 				}
-				if (gg and rslt) {
+				if (game and rslt) {
 					//redirect on success to /success
 					location.replace("/success")
 				}
