@@ -37,8 +37,21 @@ The `tests` directory contains a test suite for the `src` package. There's a `ru
 
 ## Specific Changes
 
+* Changed files: `Dockerfile`, `flask_vocab.py`, `vocab.py`
+	* most changes listed in files
+* referance websites listed most help form given files minijax 
+* Major changes: jinji logic replaced with Javascipt logic, Removed submit button, Set page to contorl it own session at keystroke.
+* Essitially what is going on is we are using flask and JQuery in a python file to at as a server and then we set up the client side in a HTML file that then uses Javascipt to format. we use three codeing langues to stack into one server client interaction.
+* To run
+	* git clone repo
+	* install docker
+	* run in terminal  `docker biuld -t anImagename .`
+	* run in terminal `docker -ip 5000:5001 anImagename`
+	* this will populate a termial unless you are running WSL then use the docker gui to open a Browser and enjoy the simple anagram game in all its unpolished glory.
 
-	 
+* thank you for reading / reviewing 
+
+* Please reach out if you have futher questions 
 
 ## Authors
 
