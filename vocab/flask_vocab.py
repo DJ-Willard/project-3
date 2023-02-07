@@ -94,7 +94,7 @@ def check():
 
     # The data we need, from form and from cookie
     #Change flask logic to get resquests
-    text = flask.request.args.get["attempt"]
+    text = flask.request.args.get["text", type=str]
     jumble = flask.session["jumble"]
     matches = flask.session.get("matches", [])  # Default to empty list
 
@@ -135,7 +135,7 @@ def check():
     else:
         result["message"] = "keep going! You can find more words."
 
-    return flask.jsonify(result)
+    return flask.jsonify(rs=result)
 
 
 ###############
