@@ -73,7 +73,7 @@
          <br />
          <div class="row">
             <div class="col-xs-6 text-center">
-               <form id="entry" method="GET" action="/_check">
+               <form id="entry" >
                   <label for="attempt">Word:</label>
                   <input id="attempt" name="attempt" type="text" width="15"
                      autocomplete="off"  autofocus />
@@ -82,10 +82,24 @@
          </div>
          <br />
          <h2>You found </h2>
-         <p id="results">
-         </p>
-         <!-- Mismatch, already found, etc. "flashed" from Python -->
-         <p class="message">{{ message }}</p>
+         <p id="results"></p>
+	 <!-- removed jinji logic adding json logic-->
+	 <script>
+		$("#entry").submit(function(event) { 
+			event.preventDefault();
+			});
+		 $("#attempt").keyup(function(event) {
+			var txt = $("attempt").val();
+			var keycode = event.which;
+			var letter = String.fromCharCode(keycode);
+			if (! "ABCDEFGHIJKLMNOPQRSTUVWXYZ".include(letter)) {return}
+			$.getJSON("/_check", {text: txt},
+				function(data) {
+				rsval = data.result.long_enough;
+				console.log("rsval: " + rsval)
+				if (rsval) {
+					$("#results").html(
+				  	
       </div>
       <!-- container -->
    </body>
