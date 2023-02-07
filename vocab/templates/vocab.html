@@ -90,14 +90,15 @@
 		$("#entry").submit(function(event) { 
 					 event.preventDefault();
 				 });
+		 $("#jumble").text();
 		 $("#attempt").keyup(function(event) {
 			var txt = $("attempt").val();
 			var keycode = event.which;
 			var letter = String.fromCharCode(keycode);
-			if (! "ABCDEFGHIJKLMNOPQRSTUVWXYZ".include(letter)) {return}
+			var letter = letter.toLowerCase();
+			if (! jumble.include(letter)) {return}
 			$.getJSON("/_check", {text: txt},function(data) {
-				rslt = data.result.success;
-				game = data.result.gg;			 
+				rslt = data.result.success;			 
 				//debug to console form minijax
 				console.log("result: " + result)
 				//current concent of the input field
