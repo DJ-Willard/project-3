@@ -103,7 +103,7 @@ def check():
     matched = WORDS.has(text)
 
     #intialized a resualt varibale
-    result = {"sucess": False,"message":"" "gg": False}
+    result = {"sucess": False,"message":"", "gg": False}
 
     # Respond appropriately
     if matched and in_jumble and not (text in matches):
