@@ -94,7 +94,7 @@ def check():
 
     # The data we need, from form and from cookie
     #Change flask logic to get resquests
-    text = flask.request.args.get["text", type=str]
+    text = flask.request.args.get("text", type=str)
     jumble = flask.session["jumble"]
     matches = flask.session.get("matches", [])  # Default to empty list
 
