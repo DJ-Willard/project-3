@@ -139,9 +139,10 @@ def check():
         result["message"] = "Congratulations! You found all the words."
         result["gg"] = True
         app.logger.debug("gg")
-    else:
-        result["message"] = "keep going! You can find more words."
-        app.logger.debug("there are more words")
+   # the error in logic I had commented out kept for later understanding and review. 
+   # else:
+       # result["message"] = "keep going! You can find more words."
+        #app.logger.debug("there are more words")
     
     result["words"] = ",".join(result["words"])
     
